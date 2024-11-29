@@ -1,1 +1,1 @@
-# SelectionInstancesTrees-
+This repository provides all the experiments from the article entitled “Efficient Instance Selection in Tree-Based Models for Data Stream Classification” . The paper was accepted for publication in ACM Symposium on Applied Computing (SAC), 2025.
