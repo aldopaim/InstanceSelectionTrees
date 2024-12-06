@@ -1,0 +1,60 @@
+
+The synthetic data sets were generated in the MOA framework.
+
+For example, if you want to perform an interleave test-then-train evaluation on AGR_a using a hoeffding tree: 
+
+EvaluateInterleavedTestThenTrain -l trees.HoeffdingTree -i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.AgrawalGenerator -f 1) -d (ConceptDriftStream -s (generators.AgrawalGenerator -f 2) -d (ConceptDriftStream -s (generators.AgrawalGenerator )   -d (generators.AgrawalGenerator -f 4) -w 50 -p 250000 ) -w 50 -p 250000 ) -w 50 -p 250000)
+
+
+The following are all the configurations of the synthetic data streams used in the paper: 
+
+#AGR
+-i 1000000 -f 1000000 -s generators.AgrawalGenerator
+
+#AGR_a
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.AgrawalGenerator -f 1) -d (ConceptDriftStream -s (generators.AgrawalGenerator -f 2) -d (ConceptDriftStream -s (generators.AgrawalGenerator )   -d (generators.AgrawalGenerator -f 4) -w 50 -p 250000 ) -w 50 -p 250000 ) -w 50 -p 250000) 
+
+#AGR_g
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.AgrawalGenerator -f 1) -d (ConceptDriftStream -s (generators.AgrawalGenerator -f 2) -d (ConceptDriftStream -s (generators.AgrawalGenerator )   -d (generators.AgrawalGenerator -f 4) -w 50000 -p 250000 ) -w 50000 -p 250000 ) -w 50000 -p 250000) 
+
+#HYPER
+-i 1000000 -f 1000000 -s (generators.HyperplaneGenerator  -k 10 -t .001) 
+
+#LED
+-i 1000000 -f 1000000 -s generators.LEDGenerator
+
+#LED_a
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.LEDGeneratorDrift -d 1)   -d (ConceptDriftStream -s (generators.LEDGeneratorDrift -d 3) -d (ConceptDriftStream -s (generators.LEDGeneratorDrift -d 5)  -d (generators.LEDGeneratorDrift -d 7) -w 50 -p 250000 ) -w 50 -p 250000 ) -w 50 -p 250000) 
+
+#LED_g
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.LEDGeneratorDrift -d 1)   -d (ConceptDriftStream -s (generators.LEDGeneratorDrift -d 3) -d (ConceptDriftStream -s (generators.LEDGeneratorDrift -d 5)  -d (generators.LEDGeneratorDrift -d 7) -w 50000 -p 250000 ) -w 50000 -p 250000 ) -w 50000 -p 250000) 
+
+#MIXED - gradual 
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.MixedGenerator -b) -d (ConceptDriftStream -s (generators.MixedGenerator -f 2 -b) -d (ConceptDriftStream -s (generators.MixedGenerator -b) -d (generators.MixedGenerator -f 2 -b) -p 250000 -w 50000) -p 250000 -w 50000) -p 250000 -w 50000) 
+
+#RBF_m
+-i 1000000 -f 1000000 -s (generators.RandomRBFGeneratorDrift -c 5 -s .0001) 
+
+#RBF_f
+-i 1000000 -f 1000000 -s (generators.RandomRBFGeneratorDrift -c 5 -s .001) 
+
+#RTG
+-i 1000000 -f 1000000 -s generators.RandomTreeGenerator
+
+#SEA  
+-i 1000000 -f 1000000 -s generators.SEAGenerator
+
+#SEA_a
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.SEAGenerator -f 1) -d (ConceptDriftStream -s (generators.SEAGenerator -f 2) -d (ConceptDriftStream -s (generators.SEAGenerator )   -d (generators.SEAGenerator -f 4) -w 50  -p 250000 ) -w 50  -p 250000 ) -w 50 -p 250000) 
+
+#SEA_g
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.SEAGenerator -f 1) -d (ConceptDriftStream -s (generators.SEAGenerator -f 2) -d (ConceptDriftStream -s (generators.SEAGenerator )   -d (generators.SEAGenerator -f 4) -w 50000  -p 250000 ) -w 50000  -p 250000 ) -w 50000 -p 250000) 
+
+#SINE
+-i 1000000 -f 1000000 -s generators.SineGenerator
+
+#WAVEFORM  
+-i 1000000 -f 1000000 -s generators.WaveformGenerator
+
+#WAVEFORM_g 
+-i 1000000 -f 1000000 -s (ConceptDriftStream -s (generators.WaveformGeneratorDrift -n) -d (ConceptDriftStream -s (generators.WaveformGeneratorDrift -i 2 -n) -d (ConceptDriftStream -s (generators.WaveformGeneratorDrift -i 3 -n) -d (generators.WaveformGeneratorDrift -i 4 -n) -p 250000 -w 50000) -p 250000 -w 50000) -p 250000 -w 50000) 
